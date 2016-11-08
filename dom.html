@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dom</title>
+    <script type="text/javascript" src="dojo-1.11.2/dojo/dojo.js"></script>
+</head>
+
+<body>
+    <h1 id="jatai">Hello jatai</h1>
+    <div id="ancestor">
+        <p id="child1">ancestor是child1的祖先元素,<span id="child3">返回true</span></p>
+    </div>
+    <p id="child2">ancestor不是child2的祖先元素,返回false</p>
+    <script type="text/javascript">
+    require([
+        'dojo/dom',
+    ], function(dom) {
+        dom.byId('jatai').innerHTML = 'Hello World!'
+
+        var c1 = dom.isDescendant('child1', 'ancestor')
+        var c2 = dom.isDescendant('child2', 'ancestor')
+        var c3 = dom.isDescendant('child3', 'ancestor')
+
+        console.log(c1); //true
+        console.log(c2); //false
+        console.log(c3); //true
+
+        dom.setSelectable('child2', false)
+    })
+    </script>
+</body>
+
+</html>

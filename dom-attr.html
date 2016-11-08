@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>dom-attr</title>
+    <script type="text/javascript" src="dojo-1.11.2/dojo/dojo.js"></script>
+</head>
+
+<body>
+
+    <h1 id="jatai" class="class1 jatai" title='h1的title'><p id="child" title="p的title">hello jatai</p></h1>
+    
+    <script type="text/javascript">
+    require([
+        'dojo/dom-attr',
+    ], function(domAttr) {
+
+        var b1 = domAttr.has('jatai','title');//true
+        var b2 = domAttr.has('jatai','alt');//false
+        var val = domAttr.get('jatai','class');//class1 jatai
+        var innerHtml1 = domAttr.getNodeProp('jatai','innerHTML')//<p>hello jatai</p>
+
+        domAttr.remove('child','title');
+        var b3 = domAttr.has('jatai','title');//false
+
+        domAttr.set('jatai','title','改变后的title')
+
+        var t = domAttr.get('jatai','title');//改变后的title
+
+
+    })
+    </script>
+</body>
+
+</html>
