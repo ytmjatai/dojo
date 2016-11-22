@@ -1,0 +1,28 @@
+{
+  "name": "dojo",
+  "version": "1.0.0",
+  "description": "dojo",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ytmjatai/dojo.git"
+  },
+  "keywords": [
+    "dojo",
+    "jatai"
+  ],
+  "author": "jatai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ytmjatai/dojo/issues"
+  },
+  "homepage": "https://github.com/ytmjatai/dojo#readme"
+}

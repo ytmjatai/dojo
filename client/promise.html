@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+
+<body>
+    <p>遍历数组的每一项送给一个Promise方法，如何按数组元素顺序输出返回的结果</p>
+    <script type="text/javascript" src='./js/dojo-1.11.2/dojo/dojo.js' data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require([
+        'dojo/Deferred',
+        'dojo/promise/all'
+    ], function(Deferred, All) {
+
+        var arr = [1, 2, 3, 4, 5, 6, 7];
+        var b = [];
+
+        arr.forEach(function(item, index, array) {
+            asyncProcess(item).then(
+                function(data) {
+                    console.log(data)
+                }
+            )
+        })
+
+        for (var i = 0; i < arr.length; i++) {
+            b[i] = asyncProcess(arr[i])
+        }
+        All(b).then(
+            function(results) {
+                console.log(results)
+            }
+        )
+
+        console.log('异步操作，继续执行...')
+
+        function asyncProcess(number) {
+
+            var deferred = new Deferred();
+            var result = [];
+            var time = 1000 * Math.random();
+
+            setTimeout(function() {
+                result = number * 2;
+                deferred.resolve(result)
+            }, time)
+
+            return deferred.promise;
+        }
+
+    })
+    </script>
+</body>
+
+</html>
